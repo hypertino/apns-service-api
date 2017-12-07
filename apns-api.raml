@@ -1,0 +1,27 @@
+#%RAML 1.0
+title: Apns service API
+version: v1
+mediaType: application/json
+baseUri: hb://apns
+
+types:
+  ApnsNotification:
+    type: object
+    properties:
+      device_token: string
+      bundle_id: string
+      payload: string
+
+  BadToken:
+    type: object
+    properties:
+      device_token: string
+      bundle_id: string
+
+/apns:
+  post:
+    body: ApnsNotification
+
+/apns-bad-device-tokens:
+  feed:post:
+    body: BadToken
